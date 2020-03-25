@@ -12,8 +12,5 @@
   "dependencies": {
     "express": "^4.17.1",
     "nodemon": "^2.0.2"
-  },
-  "devDependencies": {
-    "@types/node": "^13.9.3"
   }
 }
