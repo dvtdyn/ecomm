@@ -15,7 +15,6 @@ const upload = multer({ storage: multer.memoryStorage() })
 router.get('/admin/products', requireAuth, async (req, res) => {
   const products = await productsRepo.getAll()
   res.send(productsIndexTemplate({ products }))
-  console.log(productsIndexTemplate({ products }))
 })
 
 router.get('/admin/products/new', requireAuth, (req, res) => {
@@ -71,5 +70,11 @@ router.post(
     res.redirect('/admin/products')
   }
 )
+
+router.post('/admin/products/:id/delete', requireAuth, async (req, res) => {
+  await productsRepo.delete(req.params.id)
+
+  res.redirect('/admin/products')
+})
 
 module.exports = router
